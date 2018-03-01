@@ -1,5 +1,5 @@
 <h1>ブログ一覧</h1>
-
+<p><%= notice %></p>
 <table>
   <tr>
     <th>タイトル</th>
@@ -8,9 +8,11 @@
 
 <% @blogs.each do |blog| %>
   <tr>
-    <td style="background:lightpink"><%= blog.title %></td>
-    <td style="background:lightgrey"><%= blog.content %></td>
-    <td><%= link_to '投稿確認', blog_path(blog.id) %></td>
+    <td style="background:lightpink;text-align:center"><%= blog.title %></td>
+    <td style="background:lightgrey;text-align:center"><%= blog.content %></td>
+    <td style="padding:10px;text-align:center"><%= link_to '投稿確認', blog_path(blog.id) %></td>
+    <td><%= link_to "ブログ編集", edit_blog_path(blog.id), data: { confirm: '本当に編集していいですか？' } %></td>
+    <td><%= link_to 'ブログを削除', blog_path(blog.id), method: :delete ,data: { confirm: '本当に削除していいですか？' }%></td>
   </tr>
 <% end %>
 </table>
